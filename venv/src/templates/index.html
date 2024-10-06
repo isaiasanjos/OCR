@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Presença</title>
+
+    <!-- Estilo CSS embutido -->
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        h1, h2 {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Título e formulário de upload de lista de presença -->
+    <h1>Enviar Lista de Presença</h1>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" name="imagem" accept="image/*" required><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <!-- Tabela que exibe as presenças registradas -->
+    <h2>Presenças Registradas</h2>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Presença</th>
+        </tr>
+        {% for presenca in presencas %}
+        <tr>
+            <td>{{ presenca.nome_aluno }}</td>
+            <td>{{ presenca.data_aula }}</td>
+            <td>{{ presenca.presenca }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
