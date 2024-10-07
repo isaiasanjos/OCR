@@ -3,56 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Presença</title>
-
-    <!-- Estilo CSS embutido -->
+    <title>Secretaria Escolar</title>
     <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        h1, h2 {
+        body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
 
-        form {
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.2em;
             margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #999;
         }
     </style>
 </head>
 <body>
-    <!-- Título e formulário de upload de lista de presença -->
-    <h1>Enviar Lista de Presença</h1>
-    <form action="/" method="POST" enctype="multipart/form-data">
-        <input type="file" name="imagem" accept="image/*" required><br>
-        <input type="submit" value="Enviar">
-    </form>
-
-    <!-- Tabela que exibe as presenças registradas -->
-    <h2>Presenças Registradas</h2>
-    <table>
-        <tr>
-            <th>Nome</th>
-            <th>Data</th>
-            <th>Presença</th>
-        </tr>
-        {% for presenca in presencas %}
-        <tr>
-            <td>{{ presenca.nome_aluno }}</td>
-            <td>{{ presenca.data_aula }}</td>
-            <td>{{ presenca.presenca }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+    <div class="container">
+        <h1>Bem-vindo à Secretaria Escolar</h1>
+        <p>Por favor, clique no botão abaixo para acessar o sistema de OCR e processar as presenças dos alunos.</p>
+        <a href="/ocr" class="btn">Acessar OCR</a>
+    </div>
+    
+    <footer>
+        &copy; 2024 Secretaria Escolar - Todos os

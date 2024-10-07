@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do OCR</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Envio de Imagem para OCR</h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <label for="imagem">Selecione uma imagem para processar:</label><br>
+            <input type="file" id="imagem" name="imagem" accept="image/*" required><br><br>
+            <input type="submit" value="Processar OCR">
+        </form>
+
+        {% if ocr_data %}
+        <div class="resultado">
+            <h2>Dados extraídos:</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data</th>
+                        <th>Presença</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for linha in ocr_data %}
+                    <tr>
+                        <td>{{ linha['nome'] }}</td>
+                        <td>{{ linha['data'] }}</td>
+                        <td>{{ linha['presenca'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p>Nenhum dado foi extraído ainda. Faça o upload de uma imagem!</p>
+        {% endif %}
+    </div>
+</body>
+</html>

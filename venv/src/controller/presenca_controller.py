@@ -28,8 +28,8 @@ def upload_presenca():
         for linha in linhas:
             # Adicione um tratamento para ignorar linhas vazias ou mal formatadas
             if ',' in linha:
-                nome, presenca = linha.split(',')
-                nova_presenca = Presenca(nome_aluno=nome.strip(), presenca=presenca.strip())
+                nome, data, presenca = linha.split(',')
+                nova_presenca = Presenca(nome_aluno=nome.strip(), data_presenca=data,presenca=presenca.strip())
                 db.add(nova_presenca)  # Adiciona a nova presença à sessão
         
         print(f"Número de presenças a serem adicionadas: {len(linhas)}")
